@@ -1,0 +1,13 @@
+{
+  "python.defaultInterpreterPath": "E:\\agent-learn\\env\\python.exe",
+  "python.terminal.activateEnvironment": true,
+
+  // Code Runner 不走 Python 扩展选的解释器，得单独指定，否则会用 PATH 里那个
+  "code-runner.executorMap": {
+    "python": "\"${workspaceFolder}\\env\\python.exe\" -u -X utf8"
+  },
+  // 在终端里跑，才能正常显示中文、也支持 input()
+  "code-runner.runInTerminal": true,
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda"
+}
