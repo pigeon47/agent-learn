@@ -1,0 +1,5 @@
+# asyncio 讲义今天的练习不需要任何第三方库（全部用标准库）
+# 下面这些是明天补练习 6 和后续调用 LLM API 时才需要装的
+
+httpx                 # 异步 HTTP 客户端，练习 6 用
+python-dotenv         # 读取 .env 里的密钥
