@@ -1,0 +1,35 @@
+[
+  {
+    "prompt": "few",
+    "n": 20,
+    "success_rate": 100.0,
+    "year_hit": 100.0,
+    "authors_hit": 100.0,
+    "avg_prompt_tokens": 704,
+    "avg_completion_tokens": 111,
+    "avg_latency_ms": 3364,
+    "csv": "E:\\agent-learn\\week02_prompt_lab\\results\\few.csv"
+  },
+  {
+    "prompt": "cot",
+    "n": 20,
+    "success_rate": 95.0,
+    "year_hit": 100.0,
+    "authors_hit": 100.0,
+    "avg_prompt_tokens": 440,
+    "avg_completion_tokens": 214,
+    "avg_latency_ms": 3040,
+    "csv": "E:\\agent-learn\\week02_prompt_lab\\results\\cot.csv"
+  },
+  {
+    "prompt": "zero",
+    "n": 20,
+    "success_rate": 95.0,
+    "year_hit": 100.0,
+    "authors_hit": 100.0,
+    "avg_prompt_tokens": 386,
+    "avg_completion_tokens": 123,
+    "avg_latency_ms": 3017,
+    "csv": "E:\\agent-learn\\week02_prompt_lab\\results\\zero.csv"
+  }
+]

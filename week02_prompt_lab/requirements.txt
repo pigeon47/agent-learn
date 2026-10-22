@@ -1,0 +1,4 @@
+# 第 2 周依赖（httpx / python-dotenv 在 env 里已有，这里补上缺的）
+httpx>=0.27
+python-dotenv>=1.0
+jsonschema>=4.20

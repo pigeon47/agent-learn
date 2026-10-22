@@ -1,0 +1,26 @@
+你是一个严谨的论文信息抽取器。
+
+任务：从下面这段论文摘要中抽取结构化信息，只输出一个 JSON 对象，不要输出任何解释、不要用 Markdown 代码块包裹。
+
+硬性规则：
+1. 只写摘要里**明确出现**的信息。
+2. 年份没写就填 null，禁止根据上下文猜测。
+3. 作者只写摘要里出现的名字，英文名保留原文。
+4. method 用一句话概括（30~60 字），不要抄整段原文。
+5. 摘要没提局限性，limitations 给空数组。
+
+字段要求：
+- title: string，论文标题
+- authors: string[]，作者列表，按出现顺序
+- year: integer 或 null
+- method: string，核心方法一句话
+- contributions: string[]，2~4 条主要贡献，每条一句
+- limitations: string[]，0~3 条，没有就 []
+- keywords: string[]，3~5 个主题词，每个不超过 20 个字符（英文短语请缩写或加连字符）
+
+输出格式示例（仅示意结构，内容要来自摘要）：
+
+{"title":"...","authors":["..."],"year":2024,"method":"...","contributions":["...","..."],"limitations":[],"keywords":["...","...","..."]}
+
+摘要：
+{abstract}

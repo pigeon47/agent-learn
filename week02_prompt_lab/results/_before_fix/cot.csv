@@ -1,0 +1,21 @@
+﻿id,ok,year_ok,authors_ok,prompt_tokens,completion_tokens,latency_ms,error,title
+s01,1,1,1,391,217,1287,,融合字典特征与预训练语言模型的联合抽取框架
+s02,0,0,0,369,169,1496,"schema: ['大模型', '代码补全', '延迟', '准确率', '量化', '推测解码'] is too long",大模型代码补全的延迟与准确率权衡研究
+s03,1,1,1,390,232,1703,,面向边缘设备的轻量级目标检测网络
+s04,0,0,0,389,231,1581,schema: 'long-document question answering' is too long,
+s05,0,0,0,380,219,1205,schema: ['在星际争霸微操任务上胜率提升 12%'] is too short,多智能体强化学习的协作通信协议
+s06,1,1,1,372,227,1528,,利用对比学习改善小样本图像分类的特征表示
+s07,1,1,1,367,160,1793,,分布式图计算中基于顶点度数预测的分区策略
+s08,0,0,0,366,189,1551,schema: ['在 transformer 负载上将 kernel 启动开销减半'] is too short,
+s09,1,1,1,373,209,1217,,基于图神经网络的药物相互作用预测模型
+s10,1,1,1,363,208,1653,,面向编程教学的自动反馈系统
+s11,1,1,1,369,162,1673,,面向时序数据的异常检测方法
+s12,1,1,1,369,227,1713,,Human Trust in Machine Translation Post-Editing
+s13,0,0,0,363,169,1335,schema: ['低信噪比条件下语音质量指标提升明显'] is too short,基于稀疏编码的语音增强方法
+s14,0,0,0,354,171,1641,schema: ['归纳出署名、引用与责任归属三类争议'] is too short,大模型辅助学术写作的伦理边界
+s15,0,0,0,378,210,1449,schema: ['在内部代码库上补全准确率提升 6.4 个点'] is too short,面向仓库级代码补全的上下文检索方法
+s16,0,0,0,367,184,1519,schema: 'privacy-preserving training' is too long,
+s17,0,0,0,371,209,1383,schema: ['仿真显示平均等待时间下降 19%'] is too short,城市交通信号的多路口协同控制研究
+s18,0,0,0,359,183,1766,schema: ['在容器环境中将检测延迟压缩到秒级'] is too short,轻量级日志异常检测方案
+s19,0,0,0,376,194,1495,schema: '' is too short,
+s20,0,0,0,364,183,1476,schema: 'degree-aware reordering' is too long,
