@@ -7,15 +7,23 @@ from . import llm, tools
 
 
 
-def run_agent(cfg: dict, question: str, max_steps: int = 6) -> dict:
-    """跑一次完整任务,返回结果字典 (含轨迹,便于复盘)。"""
-    messages: list[dict] = [{"role": "user","content": question}]
+def run_agent(cfg: dict, question: str, max_steps: int = 6,
+              messages: list[dict] | None = None,
+              stream: bool = False, on_delta=None) -> dict:
+    """跑一次完整任务,messages 传入已有历史则续用 (多轮对话) , None 则新建"""
+    if messages is None:
+        messages = []
+    messages.append({"role": "user", "content": question})
+
     trace: list[dict] = []
     tools_used: list[str] = []
     usage_total = {"prompt_tokens": 0, "completion_tokens": 0}
 
     for step in range(1, max_steps + 1):
-        message, usage = llm.chat(cfg, messages, tools.TOOLS)
+        if stream:
+            message, usage = llm.chat_stream(cfg, messages, tools.TOOLS, on_delta=on_delta)
+        else:
+            message, usage = llm.chat(cfg, messages, tools.TOOLS)
         usage_total["prompt_tokens"] += usage.get("prompt_tokens", 0)
         usage_total["completion_tokens"] += usage.get("completion_tokens", 0)
 
@@ -24,6 +32,7 @@ def run_agent(cfg: dict, question: str, max_steps: int = 6) -> dict:
         # 没有 tool_call = 模型给出最终答案,循环结束
         if not tool_calls:
             answer = (message.get("content") or "").strip()
+            messages.append({"role": "assistant", "content": answer})
             trace.append({"step": step, "type": "answer", "content": answer})
             return {
                 "answer": answer or "(模型返回了空内容)",

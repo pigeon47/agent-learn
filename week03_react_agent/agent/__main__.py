@@ -56,11 +56,49 @@ def run_eval(cfg: dict, max_steps: int) -> None:
     print(f"\n工具选择准确率: {hit:.1f}% ({sum(r['ok'] for r in rows)}/{len(rows)})")
     print(f"明细已写入: {out}")
 
+def run_and_show(cfg: dict, question: str, max_steps: int,
+                 history: list[dict], stream: bool = False) -> dict:
+    """跑一题并展示结果: history 会被原地修改. stream=True 时逐字打印答案"""
+    on_delta = None
+    if stream:
+        print("助手>", end="", flush=True)
+        on_delta = lambda d: print(d, end="", flush=True)   #noqa: E731
+
+    result = loop.run_agent(cfg, question, max_steps=max_steps, messages=history,
+                            stream=stream, on_delta=on_delta)
+    if stream:
+        print()     #流式内容后面补一个换行
+        u = result["usage"]
+        print(f"    (步数={result['steps']}, 工具={result['tools_used']}"
+              f"token={u['prompt_tokens']}+{u['completion_tokens']}"
+              f"结束原因={result['stopped']})")
+    else:
+        print_run(result)
+    return result
+
+def chat_loop(cfg: dict, max_steps: int, stream: bool = False) -> None:
+    history: list[dict] = []
+    print("多轮对话模式，输入 exit 退出。")
+    while True:
+        try:
+            q = input("\n你> ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            break
+        if q.lower() in {"exit", "quit", "q"}:
+            break
+        if not q:
+            continue
+        run_and_show(cfg, q, max_steps, history, stream)
+        print(f"      （历史消息 {len(history)} 条）")
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="手写 ReAct Agent")
     parser.add_argument("question", nargs="*", help="要问 Agent 的问题")
     parser.add_argument("--eval", action="store_true", help="跑测试集, 统计工具选择准确率")
     parser.add_argument("--max-steps", type=int, default=6)
+    parser.add_argument("--chat", action="store_true", help="多轮对话模式")
+    parser.add_argument("--stream", action="store_true", help="流式输出最终答案")
     args = parser.parse_args()
 
     config.load_env()
@@ -70,10 +108,13 @@ def main() -> None:
         run_eval(cfg, args.max_steps)
         return
 
+    if args.chat:
+        chat_loop(cfg, args.max_steps, args.stream)
+        return
+
     question = " ".join(args.question).strip() or input("问题: ")
     print(f"\n[问题] {question}")
-    result = loop.run_agent(cfg, question, max_steps=args.max_steps)
-    print_run(result)
+    result = run_and_show(cfg, question, args.max_steps, [], args.stream)
 
     out_dir = config.PROJECT_DIR / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
