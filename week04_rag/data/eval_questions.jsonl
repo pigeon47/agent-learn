@@ -1,0 +1,20 @@
+{"id": "q01", "question": "asyncio.gather 怎么用？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q02", "question": "create_task 和 gather 有什么区别？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q03", "question": "怎么给协程设置超时？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q04", "question": "Semaphore 怎么限制并发数？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q05", "question": "为什么报错 This event loop is already running？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q06", "question": "TaskGroup 和 gather 有什么区别？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q07", "question": "怎么取消一个正在运行的协程？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q08", "question": "asyncio.sleep 怎么用？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q09", "question": "阻塞函数怎么放进事件循环里跑？", "expect_doc": "asyncio函数速查手册.md"}
+{"id": "q10", "question": "第 3 周的必做任务是什么？", "expect_doc": "agent学习路线.md"}
+{"id": "q11", "question": "DeepSeek 思考模式下 temperature 还有效吗？", "expect_doc": "agent学习路线.md"}
+{"id": "q12", "question": "第 9 周要做什么？", "expect_doc": "agent学习路线.md"}
+{"id": "q13", "question": "什么时候该用 LangGraph？", "expect_doc": "agent学习路线.md"}
+{"id": "q14", "question": "RAG 里 chunk 长度怎么选？", "expect_doc": "agent学习路线.md"}
+{"id": "q15", "question": "什么是提示词注入，怎么防？", "expect_doc": "agent学习路线.md"}
+{"id": "q16", "question": "每个阶段末尾要做哪些验收？", "expect_doc": "agent学习路线.md"}
+{"id": "q17", "question": "每周日自检要回答哪几个问题？", "expect_doc": "agent学习路线.md"}
+{"id": "q18", "question": "怎么用 Kubernetes 部署服务？", "expect_doc": "NONE"}
+{"id": "q19", "question": "Kafka 怎么保证消息顺序？", "expect_doc": "NONE"}
+{"id": "q20", "question": "MySQL 索引怎么优化？", "expect_doc": "NONE"}
