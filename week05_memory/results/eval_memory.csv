@@ -1,0 +1,21 @@
+﻿group,id,needs_memory,expect,ok,answer,prompt_tokens,completion_tokens
+no_memory,m01,True,张伟,0,我不知道你的名字，因为你还没有告诉我。你可以直接告诉我，我会记住并在对话中称呼你。,22,20
+no_memory,m02,True,Agent,0,我目前还不知道你的学习目标，因为你没有提供相关信息。你可以告诉我你在学什么、想达到什么水平、有没有考试或截止日期，我可以,23,42
+no_memory,m03,True,简洁,1,根据我们之前的交流，你似乎更喜欢**简洁、直接、准确**的回答风格，不喜欢冗长的铺垫或过度解释。你倾向于快速获取核心信息,24,38
+no_memory,m04,True,5,0,我这边看不到你的学习进度或课程安排，所以没法判断你现在学到第几周。你可以告诉我课程名称、开学日期或当前章节，我就能帮你推,25,35
+no_memory,m05,True,deepseek,0,我无法查看或识别你当前使用的具体模型信息。建议你查看所用平台或客户端的模型说明/设置页面，那里通常会标注当前模型名称和版,24,35
+no_memory,m06,True,agent-learn,0,你还没有告诉我具体环境，我无法确定你的项目目录。请补充以下信息之一：  - 你使用的操作系统（Windows / mac,24,200
+no_memory,m07,True,env,1,你这个问题缺少关键信息，我没法直接给出唯一答案。需要先确认几件事：  1. **代码在哪里**：本地机器、远程服务器、容,26,256
+no_memory,m08,True,表情,0,我不希望回答里出现什么？——你这句话本身是个问题，但我没法确定你具体指哪类内容。如果你是在问“我不希望回答里出现什么”这,25,92
+no_memory,m09,False,并发,1,`asyncio.gather` 的作用是**并发运行多个 awaitable 对象（协程、Task 或 Future）,27,281
+no_memory,m10,False,检索,1,BM25 是一种用于**信息检索**的排序算法，主要用来衡量**查询（query）与文档之间的相关性**，从而对搜索结果,25,207
+with_memory,m01,True,张伟,1,你叫张伟。,125,5
+with_memory,m02,True,Agent,1,你的学习目标是在 12 周内做出可部署的 AI Agent 系统。当前是第 5 周，正在学习记忆化与状态管理。,126,34
+with_memory,m03,True,简洁,1,你偏好简洁的回答风格，不用表情符号。,127,10
+with_memory,m04,True,5,1,你现在是第 5 周，正在学习记忆化与状态管理。,128,16
+with_memory,m05,True,deepseek,1,你当前使用的模型是 deepseek-flash。,127,10
+with_memory,m06,True,agent-learn,1,你的项目放在 `E:\agent-learn`。,127,10
+with_memory,m07,True,env,1,用 `E:\agent-learn\env\python.exe`。,129,13
+with_memory,m08,True,表情,1,根据你的已知信息，回答里不要出现表情符号。,128,12
+with_memory,m09,False,并发,1,`asyncio.gather` 用于并发运行多个 awaitable（协程、Task、Future），并等待它们全部完,130,312
+with_memory,m10,False,检索,1,BM25 是一种用于信息检索的排序算法，主要用来衡量查询词与文档之间的相关性，从而对搜索结果排序。  核心用途： - 搜,128,163

@@ -1,0 +1,10 @@
+{"id": "m01", "question": "我叫什么名字？", "expect": ["张伟"], "needs_memory": true}
+{"id": "m02", "question": "我的学习目标是什么？", "expect": ["Agent"], "needs_memory": true}
+{"id": "m03", "question": "我更喜欢什么样的回答风格？", "expect": ["简洁"], "needs_memory": true}
+{"id": "m04", "question": "我现在学到第几周了？", "expect": ["5"], "needs_memory": true}
+{"id": "m05", "question": "我用的模型是哪个？", "expect": ["deepseek"], "needs_memory": true}
+{"id": "m06", "question": "我的项目放在哪个目录？", "expect": ["agent-learn"], "needs_memory": true}
+{"id": "m07", "question": "我用哪个 Python 环境跑代码？", "expect": ["env"], "needs_memory": true}
+{"id": "m08", "question": "我不希望回答里出现什么？", "expect": ["表情"], "needs_memory": true}
+{"id": "m09", "question": "asyncio.gather 的作用是什么？", "expect": ["并发"], "needs_memory": false}
+{"id": "m10", "question": "BM25 是用来做什么的？", "expect": ["检索"], "needs_memory": false}
