@@ -57,7 +57,8 @@ def run_eval(cfg: dict, max_steps: int) -> None:
     print(f"明细已写入: {out}")
 
 def run_and_show(cfg: dict, question: str, max_steps: int,
-                 history: list[dict], stream: bool = False) -> dict:
+                 history: list[dict], stream: bool = False,
+                 image_path: str | None = None) -> dict:
     """跑一题并展示结果: history 会被原地修改. stream=True 时逐字打印答案"""
     on_delta = None
     if stream:
@@ -65,7 +66,7 @@ def run_and_show(cfg: dict, question: str, max_steps: int,
         on_delta = lambda d: print(d, end="", flush=True)   #noqa: E731
 
     result = loop.run_agent(cfg, question, max_steps=max_steps, messages=history,
-                            stream=stream, on_delta=on_delta)
+                            stream=stream, on_delta=on_delta, image_path=image_path)
     if stream:
         print()     #流式内容后面补一个换行
         u = result["usage"]
@@ -96,9 +97,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="手写 ReAct Agent")
     parser.add_argument("question", nargs="*", help="要问 Agent 的问题")
     parser.add_argument("--eval", action="store_true", help="跑测试集, 统计工具选择准确率")
-    parser.add_argument("--max-steps", type=int, default=6)
+    parser.add_argument("--max-steps", type=int, default=10)
     parser.add_argument("--chat", action="store_true", help="多轮对话模式")
     parser.add_argument("--stream", action="store_true", help="流式输出最终答案")
+    parser.add_argument("--image", default=None, help="图片路径，随问题一起发给模型")
     args = parser.parse_args()
 
     config.load_env()
@@ -114,7 +116,7 @@ def main() -> None:
 
     question = " ".join(args.question).strip() or input("问题: ")
     print(f"\n[问题] {question}")
-    result = run_and_show(cfg, question, args.max_steps, [], args.stream)
+    result = run_and_show(cfg, question, args.max_steps, [], args.stream, args.image)
 
     out_dir = config.PROJECT_DIR / "results"
     out_dir.mkdir(parents=True, exist_ok=True)

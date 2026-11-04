@@ -1,0 +1,11 @@
+id,human_verdict,human_total,judge_verdict,judge_total,agree,note
+a01,pass,4,pass,4.0,1,风速写成8.3但工具是8，属小瑕疵
+a04,pass,5,pass,5.0,1,
+a10,pass,5,pass,4.75,1,
+a14,,,pass,2.75,,先不填，等重跑后看完整答案
+a16,pass,5,pass,5.0,1,
+a19,pass,5,pass,5.0,1,
+a21,pass,4,pass,4.75,1,末尾表格截断但不影响结论
+a24,pass,5,pass,5.0,1,
+a26,pass,4,pass,3.5,1,提及工具细节属推测但不危险
+a30,pass,4,pass,4.75,1,

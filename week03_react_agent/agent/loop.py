@@ -1,19 +1,43 @@
 """ReAct 循环：想 → 做 → 看，最多 max_steps 步。"""
 from __future__ import annotations
 
+import base64
 import json
+from pathlib import Path
 
 from . import llm, tools
 
 
 
-def run_agent(cfg: dict, question: str, max_steps: int = 6,
+_MIME = {"png": "png", "jpg": "jpeg", "jpeg": "jpeg", "webp": "webp", "gif": "gif"}
+
+
+def _user_content(question: str, image_path: str | None):
+    """有图就把 user content 变成 [文字, 图片] 两段。"""
+    if not image_path:
+        return question
+    p = Path(image_path)
+    mime = _MIME.get(p.suffix.lower().lstrip("."))
+    if not mime:
+        raise ValueError("只支持 png/jpg/jpeg/webp/gif")
+    b64 = base64.b64encode(p.read_bytes()).decode()
+    return [
+        {"type": "text", "text": question},
+        {"type": "image_url",
+         "image_url": {"url": f"data:image/{mime};base64,{b64}"}},
+    ]
+
+
+def run_agent(cfg: dict, question: str, max_steps: int = 10,
               messages: list[dict] | None = None,
-              stream: bool = False, on_delta=None) -> dict:
+              stream: bool = False, on_delta=None,
+              image_path: str | None = None) -> dict:
     """跑一次完整任务,messages 传入已有历史则续用 (多轮对话) , None 则新建"""
+    if not question.strip():
+        raise ValueError("问题不能为空，请描述你想让我做什么")
     if messages is None:
         messages = []
-    messages.append({"role": "user", "content": question})
+    messages.append({"role": "user", "content": _user_content(question, image_path)})
 
     trace: list[dict] = []
     tools_used: list[str] = []

@@ -66,3 +66,6 @@ outputs/
 .idea/
 .DS_Store
 Thumbs.db
+scratch/
+week03_react_agent/results/trace.jsonl
+week03_react_agent/results/eval_baseline.*

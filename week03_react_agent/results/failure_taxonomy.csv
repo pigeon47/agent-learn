@@ -1,0 +1,4 @@
+id,type,rule_reason,judge_verdict,judge_total,category,who_to_blame,evidence,action
+a20,boundary,ok,fail,3.75,C,system,答案被 answer[:2000] 截断（长度正好 2000），judge 看不到后半部分,把 answer 上限提到 4000 或告知 judge"答案可能被截断"
+a22,boundary,ok,fail,3.75,C,system,list_dir 实际返回 40 项且包含 test.png，但 digest 只存了 1267 字符,把 digest 上限从 6000 提到 12000
+a23,boundary,ok,fail,2.75,B,model,答案给出 1480 元 / 市值 1.85 万亿等 digest 中不存在的数字（digest 已 6000 截断，无法完全排除证据缺失）,题目本身要求"无行情工具应说明"，应加提示词约束不许给具体股价
